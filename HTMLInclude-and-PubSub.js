@@ -1,6 +1,7 @@
 /*! HTMLIncludePS v1.0.0 | MIT License | github.com/paul-browne/HTMLInclude-and-pubSub */ 
 !function(w, d) {
     if (!w.PS) {
+        w.state = {};
         w.HTMLInclude = function() {
             function isInViewport(element, offset) {
                 return element.getBoundingClientRect().top <= (+offset + w.innerHeight);
