@@ -1,6 +1,6 @@
 /*! HTMLIncludePS v1.0.0 | MIT License | github.com/paul-browne/HTMLInclude-and-pubSub */ 
 !function(w, d) {
-    if (!w.PS) {
+    if (!w.state) {
         w.state = {};
         w.HTMLInclude = function() {
             function isInViewport(element, offset) {
@@ -62,10 +62,9 @@
             }
         }
 
-        w.PS = {};
         var topics = {};
         var subUid = -1;
-        PS.sub = function(topic, f) {
+        state.sub = function(topic, f) {
             if (!topics[topic]) {
                 topics[topic] = [];
             }
@@ -76,7 +75,7 @@
             });
             return t;
         };
-        PS.pub = function(topic, args) {
+        state.pub = function(topic, args) {
             if (!topics[topic]) {
                 return false;
             }
@@ -90,7 +89,7 @@
             }, 0);
             return true;
         };
-        PS.unsub = function(t) {
+        state.unsub = function(t) {
             for (var m in topics) {
                 if (topics[m]) {
                     for (var i = 0, j = topics[m].length; i < j; i++) {
